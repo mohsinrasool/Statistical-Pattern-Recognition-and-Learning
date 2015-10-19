@@ -1,0 +1,26 @@
+function [  ] = plotData( data, plotTitle )
+
+    % hold the output until all data is plotted
+    iClass1 = 0;
+    iClass2 = 0;
+    class1 = [];
+    class2 = [];
+
+    hold all;
+   
+    scatter(data(:,1), data(:,2),'o','blue');
+
+    % Create xlabel
+    xlabel({'Points'});
+
+    % Create ylabel
+    ylabel({'Targets'});
+
+    % Create title
+    title({plotTitle});
+
+    legend('Bus (1)', 'Dinosaur (2)', 'Elephant (3)');
+    % hold off and display the fig.
+    hold off;
+end
+

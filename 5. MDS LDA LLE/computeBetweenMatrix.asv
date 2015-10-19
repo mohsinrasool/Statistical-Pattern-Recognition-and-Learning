@@ -1,0 +1,19 @@
+function [ Sb ] = computeBetweenMatrix( train )
+
+features = size(train,2)-1;
+
+
+meanClass2 = mean(train(train(:,end-1) == 2,1:end-1)))
+meanClass5 = mean(train(train(:,end-1) == 5,1:end-1)))
+meanClass7 = mean(train(train(:,end-1) == 7,1:end-1)))
+
+priorClass2 = size(find(train(:,end) == class),1)/ size(train,1);
+priorClass5 = size(find(train(:,end) == class),1)/ size(train,1);
+priorClass7 = size(find(train(:,end) == class),1)/ size(train,1);
+
+globalMean = priorClass2 * meanClass2 + priorClass5 * meanClass5 + priorClass7 * meanClass7;
+
+
+Sb = priorClass2 * meanClass2 + priorClass5 * meanClass5 + priorClass7 * meanClass7;
+end
+

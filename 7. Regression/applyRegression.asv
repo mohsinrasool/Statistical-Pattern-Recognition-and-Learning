@@ -1,0 +1,24 @@
+function [ W ] = applyRegression( trainData, degree )
+
+    noOfPoints = size(trainData,1);
+    
+    switch(degree)
+        case 1
+            X = [ ones(noOfPoints, 1) trainData(:,1)] ;
+        case 2
+            X = [ ones(noOfPoints, 1) trainData(:,1) trainData(:,1) * trainData(:,1)' ] ;
+        case 3
+            X = [ ones(noOfPoints, 1) ones(noOfPoints, 1) ones(noOfPoints, 1) trainData(:,1)] ;
+        case 4
+            X = [ ones(noOfPoints, 1) ones(noOfPoints, 1) ones(noOfPoints, 1) ones(noOfPoints, 1) trainData(:,1)] ;
+        case 5
+            X = [ ones(noOfPoints, 1) ones(noOfPoints, 1) ones(noOfPoints, 1) ones(noOfPoints, 1) ones(noOfPoints, 1) ones(noOfPoints, 1) trainData(:,1)] ;
+    end
+    R = trainData(:,2);
+
+    A = X' * X;
+    B = X' * R;
+    
+    W = inv(A) * B;
+end
+
